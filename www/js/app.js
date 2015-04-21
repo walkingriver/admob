@@ -16,8 +16,8 @@
         vm.showFullAd = showFullAd;
 
         var admobid = {
-            banner: 'ca-app-pub-5422413832537104/8519727287',
-            interstitial: 'ca-app-pub-5422413832537104/2473193680'
+            banner: 'YOUR BANNER AD ID HERE',
+            interstitial: 'YOUR INTERSTITIAL AD ID HERE'
         };
 
         document.addEventListener('deviceready', function () {
