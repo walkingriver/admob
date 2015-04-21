@@ -1,7 +1,7 @@
 <ion-view view-title="Home">
     <ion-content>
         <ion-list class="item item-list">
-            <h3>You are on...</h3>
+            <h3>You are on...<span ng-show="vm.deviceSupport">{{vm.deviceSupport}}</span></h3>
             <ul>
                 <li>Cordova: {{vm.cordova}}</li>
                 <li>Model: {{vm.model}}</li>
@@ -10,6 +10,8 @@
                 <li>Version: {{vm.version}}</li>
             </ul>
         </ion-list>
+        <ion-list class="item item-list">
+            <h3>{{vm.adSupport}}</h3>
+        </ion-list>
     </ion-content>
 </ion-view>
-

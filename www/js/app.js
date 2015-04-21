@@ -5,12 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 (function () {
     angular.module('starter', ['ionic', 'ngCordova'])
-        .controller('HomeController', ['$scope', '$cordovaDevice', HomeController])
+        .controller('HomeController', ['$scope', '$window', '$cordovaDevice', '$cordovaGoogleAds', HomeController])
         .run(startup)
         .config(config);
 
-    function HomeController($scope, $cordovaDevice) {
+    function HomeController($scope, $window, $cordovaDevice, $cordovaGoogleAds) {
         var vm = this;
+        vm.deviceSupport = '';
+        vm.adSupport = '';
 
         document.addEventListener('deviceready', function () {
             if ($cordovaDevice) {
@@ -19,11 +21,36 @@
                 vm.platform = $cordovaDevice.getPlatform();
                 vm.uuid = $cordovaDevice.getUUID();
                 vm.version = $cordovaDevice.getVersion();
-                $scope.$apply();
             } else {
-                alert('No device support!');
+                vm.deviceSupport = 'No device support!';
             }
+
+            if ($cordovaGoogleAds) {
+                setupAds();
+            } else {
+                vm.adSupport = 'No ad support';
+            }
+
+            $scope.$apply();
         });
+
+        function setupAds() {
+            vm.adSupport = 'Ads are supported';
+            var admobid = {
+                banner: 'ca-app-pub-5422413832537104/8519727287',
+                interstitial: 'ca-app-pub-5422413832537104/2473193680'
+            };
+
+            try {
+                $cordovaGoogleAds.createBanner({
+                    adId: admobid.banner,
+                    position: $window.AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow: true
+                });
+            } catch (e) {
+                alert(e);
+            }
+        }
     }
 
     function startup($ionicPlatform) {
