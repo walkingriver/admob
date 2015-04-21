@@ -17,7 +17,9 @@
   "cordovaPlugins": [
     "org.apache.cordova.device",
     "org.apache.cordova.console",
-    "com.ionic.keyboard"
+    "com.ionic.keyboard",
+    "com.google.cordova.admob",
+    "com.rjfun.cordova.extension"
   ],
   "cordovaPlatforms": [
     "ios"

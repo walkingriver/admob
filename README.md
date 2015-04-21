@@ -8,7 +8,9 @@ Suggestions and Pull Requests are welcome.
 1. Register with Google AdMob and create at least one of each type of ad. 
 1. Record your Ad unit ID for each.
 1. Clone this repository.
+1. Run `npm install && bower install` to get all necessary depenencies.
 1. Add a platform. `ionic platform add ios` or `ionic platform add android`.
+1. Restore the plugins with `ionic state restore`.
 1. Edit www/js/app.js (lines 18-19) with your Ad Unit IDs.
 1. Save all
 1. Run the project on your device or emulator `ionic run ios` or `ionic run android`
@@ -16,9 +18,13 @@ Suggestions and Pull Requests are welcome.
 ## Prerequisites
 To build and run this demo, you must already have installed:
 
+ * npm
+ * bower
  * Ionic Framework 1.0rc+
  * Cordova 3.7+
- * At least one platform (iOS or Android)
+ * At least one platform (iOS or Android):
+     * Android SDK or
+     * Xcode 6.x
  
 ## Primary Goals
 When complete the application should meet the following goals and objectives:
