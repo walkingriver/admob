@@ -9,8 +9,8 @@ Suggestions and Pull Requests are welcome.
 1. Record your Ad unit ID for each.
 1. Clone this repository.
 1. Run `npm install && bower install` to get all necessary depenencies.
-1. Add a platform. `ionic platform add ios` or `ionic platform add android`.
 1. Restore the plugins with `ionic state restore`.
+1. Add a platform. `ionic platform add ios` or `ionic platform add android`.
 1. Edit www/js/app.js (lines 18-19) with your Ad Unit IDs.
 1. Save all
 1. Run the project on your device or emulator `ionic run ios` or `ionic run android`
