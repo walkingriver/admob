@@ -1,17 +1,24 @@
 <ion-view view-title="Home">
     <ion-content>
-        <ion-list class="item item-list">
-            <h3>You are on...<span ng-show="vm.deviceSupport">{{vm.deviceSupport}}</span></h3>
-            <ul>
-                <li>Cordova: {{vm.cordova}}</li>
-                <li>Model: {{vm.model}}</li>
-                <li>Platform: {{vm.platform}}</li>
-                <li>UUID: {{vm.uuid}}</li>
-                <li>Version: {{vm.version}}</li>
-            </ul>
-        </ion-list>
-        <ion-list class="item item-list">
-            <h3>{{vm.adSupport}}</h3>
-        </ion-list>
+        <div class="list list-card">
+            <div class="item item-divider">
+                <h3>You are on...<span ng-show="vm.deviceSupport">{{vm.deviceSupport}}</span></h3>
+                </div>
+            <div class="item item-body">
+                <ul>
+                    <li>Cordova: {{vm.cordova}}</li>
+                    <li>Model: {{vm.model}}</li>
+                    <li>Platform: {{vm.platform}}</li>
+                    <li>Version: {{vm.version}}</li>
+                </ul>
+            </div>
+
+            <div class="item item-body">
+                <h3>{{vm.adSupport}}</h3>
+                <button class="button button-block" ng-click="vm.showFullAd()" ng-enabled="vm.adSupport">Show Full Page
+                    Ad
+                </button>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

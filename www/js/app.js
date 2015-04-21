@@ -13,13 +13,18 @@
         var vm = this;
         vm.deviceSupport = '';
         vm.adSupport = '';
+        vm.showFullAd = showFullAd;
+
+        var admobid = {
+            banner: 'ca-app-pub-5422413832537104/8519727287',
+            interstitial: 'ca-app-pub-5422413832537104/2473193680'
+        };
 
         document.addEventListener('deviceready', function () {
             if ($cordovaDevice) {
                 vm.cordova = $cordovaDevice.getCordova();
                 vm.model = $cordovaDevice.getModel();
                 vm.platform = $cordovaDevice.getPlatform();
-                vm.uuid = $cordovaDevice.getUUID();
                 vm.version = $cordovaDevice.getVersion();
             } else {
                 vm.deviceSupport = 'No device support!';
@@ -36,17 +41,38 @@
 
         function setupAds() {
             vm.adSupport = 'Ads are supported';
-            var admobid = {
-                banner: 'ca-app-pub-5422413832537104/8519727287',
-                interstitial: 'ca-app-pub-5422413832537104/2473193680'
-            };
 
             try {
                 $cordovaGoogleAds.createBanner({
                     adId: admobid.banner,
                     position: $window.AdMob.AD_POSITION.BOTTOM_CENTER,
+                    isTesting: false,
                     autoShow: true
                 });
+
+                $cordovaGoogleAds.prepareInterstitial({
+                    adId: admobid.interstitial,
+                    isTesting: false,
+                    autoShow: false
+                });
+            } catch (e) {
+                alert(e);
+            }
+        }
+
+        function showFullAd() {
+            try {
+                if (vm.adSupport) {
+                    $cordovaGoogleAds.showInterstitial()
+                        .then(function () {
+                            $cordovaGoogleAds.prepareInterstitial({
+                                adId: admobid.interstitial,
+                                autoShow: false
+                            });
+                        });
+                } else {
+                    alert('No Ads!');
+                }
             } catch (e) {
                 alert(e);
             }
